@@ -1,0 +1,6 @@
+body {font:13px/1 arial,"trebuchet MS",tahoma,helvetica,clean,sans-serif; background:none;}
+#container {width:250px; height:55px; padding-left:75px; background:#143352 url("img/logo-less-small.png") 10px center no-repeat; overflow:hidden; -moz-border-radius:10px; border-radius:10px; -webkit-border-radius:10px; -o-border-radius:10px;}
+#container h1 {color:#fff; font-weight:700; font-size:13px; margin:12px 10px; margin-bottom:7px;}
+#container .message {font-weight:700; font-size:12px; margin-left:10px; margin-right:10px; height:15px; overflow:hidden; white-space:nowrap;}
+#container .message.error {color:#ff0000;}
+#container .message.success {color:#38BC00;}

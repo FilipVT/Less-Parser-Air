@@ -1,0 +1,129 @@
+* {margin:0; padding:0; font-size:13px; font-family:Arial;}
+body {overflow:hidden; height:100%;}
+#appContainer {margin:0em 0em;height:100%; min-height:100%;}
+li {list-style:none;}
+
+/* app header ............................................................... */
+#appHeader { overflow:hidden; background:#143352; position:relative;}
+#appHeader .appLogo { margin:13px;}
+#appHeader .appLogo img {display:block;}
+#appHeader .navMain {position:absolute; left:170px; top:25px; background:#CCCCCC; overflow:hidden; -moz-border-radius:4px; border-radius:4px; -webkit-border-radius:4px; }
+#appHeader .navMain li {float:left; border-right:1px solid #878787;}
+#appHeader .navMain li.first a {-webkit-border-top-left-radius:4px; -webkit-border-bottom-left-radius:4px;}
+#appHeader .navMain li.last a {-webkit-border-top-right-radius:4px; -webkit-border-bottom-right-radius:4px;}
+#appHeader .navMain li.last {border-right:none;}
+#appHeader .navMain li a {display:block; color:#212121; text-decoration:none; padding:5px 10px;}
+#appHeader .navMain li a:hover {background:#B2B2B2;}
+#appHeader .navMain li.active a {background:#fff;}
+
+/* app footer ............................................................... */
+#appFooter {padding:5px 14px; height:25px; background:#A5A5A5; background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #A5A5A5), color-stop(100%, #909090)); border-top:1px solid #212121;}
+#appFooter .formRow {float:left; margin-right:30px;}
+#appFooter .formRow .caption {line-height:1.95em;}
+#appFooter button {padding:3px 7px;}
+#appMain {height:100%;}
+
+/* projects ................................................................. */
+.projects {overflow:hidden;}
+.projects .projectList {float:left; width:225px; height:100%; border-right:2px solid #B9BCC1; background:#DEE5ED;}
+.projects .projectList .actions {overflow:hidden; border-bottom:1px solid #B9BCC1; background:#CCCCCC;}
+.projects .projectList .actions li {float:left; border-right:1px solid #B9BCC1;}
+.projects .projectList .actions li:last-child {border:none;}
+.projects .projectList .actions a {display:block; padding:5px 12px; padding-left:20px;  text-decoration:none; color:#212121;}
+.projects .projectList .actions a.add {padding-left:25px; background:url("img/icon-add.png") 5px 5px no-repeat;}
+.projects .projectList .actions a.delete {padding-left:25px; background:url("img/icon-delete.png") 5px 5px no-repeat;}
+.projects .projectList .actions a.edit {padding-left:25px; background:url("img/icon-edit.png") 5px 5px no-repeat;}
+.projects .projectList .list {height:250px; overflow-x:hidden; overflow-y:auto;}
+.projects .projectList .list ul {margin:5px 3px;}
+.projects .projectList .list ul li { -webkit-border-radius:4px;}
+.projects .projectList .list ul li:hover {cursor:pointer;}
+.projects .projectList .list ul li.active {background:#8EAAC2;}
+.projects .projectList .list ul li a {display:block; padding:10px 14px; text-decoration:none; color:#000;}
+.projects .projectList .list ul li.active a {color:#fff;}
+.projects .projectInfo {margin-left:227px;}
+.projects .projectInfo .actions {overflow:hidden; border-bottom:1px solid #B9BCC1; background:#CCCCCC;}
+.projects .projectInfo .actions a {float:left; display:block; padding:5px 12px; padding-left:20px; border-right:1px solid #B9BCC1; text-decoration:none; color:#212121;}
+.projects .projectInfo .actions a:last-child {border:none;}
+.projects .projectInfo .actions a.refresh {padding-left:25px; background:url("img/icon-refresh.png") 5px 5px no-repeat;}
+.projects .projectInfo .list {height:222px; overflow-x:hidden; overflow-y:auto; position:relative;}
+.projects .projectInfo .list li {position:relative; padding:10px 14px; padding-left:38px; border-bottom:1px solid #E9EBF7;}
+.projects .projectInfo .list li input.parse {position:absolute; left:11px; top:10px;}
+.projects .projectInfo .list li input.minify {position:absolute; right:11px; top:10px;}
+.projects .projectInfo .list li:nth-child(even) {background:#F7F7F9;}
+.projects .projectInfo .list li .folder {display:block; overflow:hidden;}
+.projects .projectInfo .list li .folder span {font-size:9px; color:#757575; white-space:nowrap;}
+.projects .projectInfo .list li label {font-weight:700; font-size:14px; color:#444444;}
+.projects .projectInfo .list li .filename {font-weight:700; color:#3276B9;}
+.projects .projectInfo .list .loading {position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(0,0,0,0.6) url("img/ajax-loader.gif") center center no-repeat;}
+.projects .projectInfo .projectFolder {overflow:hidden; background:#AFAFAF; padding:5px 11px; height:18px;}
+.projects .projectInfo .projectFolder {white-space:nowrap;}
+.projects .projectInfo .projectFolder span {font-size:9px; white-space:nowrap;}
+.projects .projectInfo .listHeader {border-bottom:1px solid #ADADAD; background:#CCCCCC; padding-top:5px; padding-bottom:5px; overflow:hidden;}
+.projects .projectInfo .listHeader .col {float:left; padding:0px 4px; display:block; font-size:93%;}
+.projects .projectInfo .listHeader .col .hidden {visibility:hidden;}
+.projects .projectInfo .listHeader .col1 {width:27px;}
+.projects .projectInfo .listHeader .col3 {float:right;}
+
+/* logs ..................................................................... */
+.log .table {position:absolute; left:0; top:0; bottom:3px; right:0;}
+.log .table .tableWrapper {overflow-x:auto; overflow-y:auto; height:100%;}
+.log .table table thead td {border-bottom:1px solid #ADADAD; background:#CCCCCC; border-left:1px solid #B9BCC1; padding-top:5px; padding-bottom:5px;}
+.log .table table td {padding:2px 5px;}
+.log .table table tbody tr:nth-child(even) td {background:#F7F7F9;}
+.log .table table .project {width:140px;} 
+.log .table table .result {width:180px;} 
+.log .table table tbody .result {color:#38BC00; font-weight:700;}
+.log .table table tbody td {border-bottom:1px solid #E9EBF7;}
+.log .table table .timestamp {width:10%;}
+.log .table table .error td.result {color:#ff0000;}
+.log .table table tbody td {font-size:93%; vertical-align:top; padding-top:4px; padding-bottom:4px;}
+
+/* config ................................................................... */
+.configuration {position:absolute; left:0; top:0; right:0; bottom:0; background:#F7F7F9; }
+.configuration .formBox {margin:25px;}
+.configuration .formBox .formRow .detail {padding-left:19px; position:relative; margin-top:1em;}
+.configuration .formBox .formRow .detail input {position:absolute; left:0; top:0;}
+
+/* footer */
+#appFooter .formRow .inputElement {padding-left:22px; position:relative;}
+#appFooter .formRow .inputElement .detail input {position:absolute; left:0; top:4px;}
+
+/* overlays ................................................................. */
+#overlays {display:none;}
+.jPop #overlays {display:block;}
+.jPop #overlayBG {display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(0,0,0, 0.6);}
+.jPop .overlay {position:absolute; left:50%; top:50%; margin-left:-150px; margin-top:-80px; width:350px; display:block;}
+.overlay {background:#fff;}
+.overlay .overlayHeader {background:#CCCCCC; padding:0.5em;}
+.overlay .overlayHeader h1 {font-size:100%;}
+.overlay .overlayHeader h1 span {font-size:116%;}
+.overlay .formRow {margin:0.75em 1em;}
+.overlay .inputElement .caption {float:left; width:5em; text-align:right; line-height:1.55em;}
+.overlay .inputElement .detail {margin-left:6em;}
+.overlay .inputElement .detail .textfield {border:1px solid #A5A5A5; -webkit-border-radius:4px; padding:0.15em 0.25em; width:15.5em;}
+.overlay .inputElement .detail button {padding:0.25em;}
+.overlay .feedback {margin-left:6em; padding-top:0.25em; display:none; color:#ff0000; font-weight:700;}
+.overlay .formFooter {overflow:hidden; margin:1em 1em;}
+.overlay .formFooter .advance {float:right;}
+.overlay .formFooter .advance button {padding:0.25em 0.75em;}
+.overlay .formFooter .abort {float:left;}
+.overlay .formFooter .abort a {line-height:1.85em;}
+
+
+
+/* absolute test */
+#appHeader {height:72px;}
+html, body {margin:0;}
+html {height:100%;}
+body {position:relative; height:100%; overflow:hidden;}
+#appContainer {position:absolute; left:0; top:0; right:0; bottom:0;}
+#appContainer #appFooter {position:absolute; left:0; right:0; bottom:0;}
+#appContainer #appMain {height:auto; position:absolute; left:0; top:72px; right:0; bottom:32px;}
+.projects .projectList {position:absolute; left:0; top:0px; bottom:0; /*background:blue;*/}
+.projects .projectList .list {position:absolute; top:25px; left:0; right:0; bottom:0; height:auto; /*background:red;*/}
+.projects .projectList .list ul {padding-bottom:10px;}
+.projects .projectInfo {position:absolute; left:227px; top:0px; bottom:0; right:0; /*background:red;*/ margin-left:0;}
+.projects .projectInfo .list {position:absolute; top:55px; left:0; right:0; bottom:0; height:auto;}
+
+html {position:relative;}
+
