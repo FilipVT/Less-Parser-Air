@@ -8,7 +8,7 @@ var selectDirectory;
 lessparser.init = function() {
 	conn = new air.SQLConnection(); 			
 	dbFile = air.File.applicationStorageDirectory.resolvePath("lessparser.db"); 
-	air.trace(dbFile.nativePath);
+	//air.trace(dbFile.nativePath);
 	if (!dbFile.exists) {    
 		var dbTemplate = air.File.applicationDirectory.resolvePath("lessparser.db");  
 		dbTemplate.copyTo(dbFile, true);  
@@ -220,26 +220,34 @@ lessparser.projects = {
 
 lessparser.files = {
 	init: function() {
-		$('.projects .projectInfo .list li input').live('change', function(e) { 
-			lessparser.files.checkState($(this));
+		$('.projects .projectInfo .list li input.parse').live('change', function(e) { 
+			lessparser.files.checkState('enabled', $(this));
 		});
 		
+		$('.projects .projectInfo .list li input.minify').live('change', function(e) { 
+			lessparser.files.checkState('minify', $(this));
+		});
+				
 		$('.projects .projectInfo .refresh').click(function(e) { 
 			e.preventDefault();
 			lessparser.files.refresh();
 		});
 		
 	},
-	checkState : function(item) {
+	checkState : function(type, item) {
 		var updateStmt = new air.SQLStatement();
 		updateStmt.sqlConnection = conn;
-		updateStmt.text = "UPDATE file SET enabled=:enabled WHERE id=:id;";	
+		if (type == "minify") {
+			updateStmt.text = "UPDATE file SET minify=:value WHERE id=:id;";
+		} else {
+			updateStmt.text = "UPDATE file SET enabled=:value WHERE id=:id;";
+		}	
 		updateStmt.parameters[":id"] = item.closest('li').attr('data-id'); 		
 									
 		if (item.is(':checked')) {
-			updateStmt.parameters[":enabled"] = 1;
+			updateStmt.parameters[":value"] = 1;
 		} else {
-			updateStmt.parameters[":enabled"] = 0;
+			updateStmt.parameters[":value"] = 0;
 		}
 		
 		updateStmt.execute();
@@ -393,7 +401,10 @@ lessparser.files = {
 				var input = $('<input type="checkbox" name="files[]" id="file-'+i+'" value="on" class="parse" />');
 				if (result.data[i].enabled == 1) input.attr('checked', 'checked');
 				
-				item.append(label).append(input);
+				var input2 = $('<input type="checkbox" name="filesMinify[]" id="fileMinify-'+i+'" value="on" class="minify" />');
+				if (result.data[i].minify == 1) input2.attr('checked', 'checked');				
+				
+				item.append(label).append(input).append(input2);
 				$('.projectInfo .list ul').append(item);
 			}
 		} 
@@ -411,9 +422,21 @@ lessparser.files = {
 		fs.close();
 		
 		try {
-			new (less.Parser)().parse(css_content, function(e, tree){
+			var parser = new(less.Parser)({
+				paths: [inputFile.parent.url+'/'], // Specify search paths for @import directives
+			});
+			parser.parse(css_content, function(e, tree){
 				try {
-					var output_css = tree.toCSS();
+					if (currentFile.minify) {
+						var output_css = tree.toCSS({
+							compress: true
+						});
+						output_css = output_css.replace(/(\r\n|\n|\r)/gm,"");
+					}
+					else {
+						var output_css = tree.toCSS();
+					}
+					
 					stream = new air.FileStream();
 			 
 					 var output_file = air.File['desktopDirectory'].resolvePath(inputFile.nativePath.substring(0, inputFile.nativePath.length - 5) + '.css');
