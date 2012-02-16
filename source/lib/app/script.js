@@ -428,10 +428,14 @@ lessparser.files = {
 			parser.parse(css_content, function(e, tree){
 				try {
 					if (currentFile.minify) {
-						var output_css = tree.toCSS({
-							compress: true
-						});
-						output_css = output_css.replace(/(\r\n|\n|\r)/gm,"");
+						//var output_css = tree.toCSS({
+						//	compress: true
+						//});
+						//output_css = output_css.replace(/(\r\n|\n|\r)/gm,"");
+						
+						// let's try YUI
+						var output_css = YAHOO.compressor.cssmin(tree.toCSS());
+						
 					}
 					else {
 						var output_css = tree.toCSS();
