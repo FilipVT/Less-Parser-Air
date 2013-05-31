@@ -1,0 +1,7 @@
+# LESS Parser Air (the fork)
+
+This is a fork of the Less Parser app by @FilipVT (http://twitter.com/FilipVT), which you can download from http://www.proving-ground.be/less/.
+
+Since I haven't built the AIR app installer yet, I use the original version and copy my modified files into the install folder.
+
+Once I learn how to create an AIR app, I may add the installer, but I don't want to infringe on the original creator's work.
